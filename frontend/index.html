@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="pt-BR" class="dark" style="color-scheme: dark">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="/favicon.ico" sizes="48x48" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <!-- Tema antes da primeira pintura: escuro por padrão e, se a pessoa escolheu o claro, aplica já aqui.
+         Sem isso a página piscaria clara até o React montar. A chave é a mesma do ThemeProvider. -->
+    <script>
+      try {
+        var light = localStorage.getItem('open-filter:theme') === 'light'
+        var root = document.documentElement
+        root.classList.toggle('dark', !light)
+        root.style.colorScheme = light ? 'light' : 'dark'
+      } catch (e) {}
+    </script>
+    <style>
+      html { background: #fff; }
+      html.dark { background: #0a0a0a; }
+    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>open-filter: filtros de foto no navegador, sem upload</title>
+    <meta name="description" content="Curvas, HSL, color grading e LUT direto no navegador, uma foto por vez. Código aberto: não precisa de conta para editar e a foto nunca sai do seu computador." />
+    <meta property="og:title" content="open-filter" />
+    <meta property="og:description" content="Edite sua foto sem ela sair do seu computador." />
+    <meta property="og:image" content="/sample.jpg" />
+    <meta name="theme-color" content="#0a0a0a" />
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

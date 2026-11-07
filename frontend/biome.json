@@ -1,0 +1,19 @@
+{
+	"$schema": "https://biomejs.dev/schemas/2.6.6/schema.json",
+	"files": {
+		"includes": ["src/**", "!src/routeTree.gen.ts", "!src/components/ui/**", "!src/index.css"]
+	},
+	"formatter": { "indentStyle": "space", "indentWidth": 4, "lineWidth": 100 },
+	"javascript": {
+		"formatter": { "semicolons": "asNeeded", "quoteStyle": "single" }
+	},
+	"linter": {
+		"rules": {
+			"preset": "recommended",
+			"suspicious": { "noExplicitAny": "error" },
+			"nursery": { "useTailwindSortedClasses": { "level": "warn" } }
+		}
+	},
+	"assist": { "actions": { "source": { "organizeImports": "on" } } },
+	"tailwind": { "mergeFunctions": ["cn"], "variantFunctions": ["cva"] }
+}
