@@ -212,7 +212,7 @@ export function PresetStrip({
                 >
                     <ul
                         ref={listRef}
-                        className="flex gap-2 overflow-x-auto p-1 md:grid md:grid-cols-3 md:content-start md:overflow-x-hidden md:pr-3"
+                        className="flex gap-2 overflow-x-auto p-1 md:grid md:grid-cols-3 md:content-start md:overflow-visible md:pr-3"
                         aria-label="Presets"
                         onKeyDown={onGridKeyDown}
                     >

@@ -78,21 +78,6 @@ export function LandingPage() {
                                 <LogoMark data-icon="inline-start" />
                                 Abrir o editor
                             </Button>
-                            {REPO_URL && (
-                                <Button
-                                    size="lg"
-                                    variant="outline"
-                                    render={
-                                        <a
-                                            href={REPO_URL}
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                        />
-                                    }
-                                >
-                                    Ver o código
-                                </Button>
-                            )}
                         </div>
                     </div>
                     <LiveDemo />

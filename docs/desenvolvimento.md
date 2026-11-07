@@ -32,7 +32,7 @@ Já cobertos: `params`, `geometry`, `guides`, `curves`, `lut`, `history`, `tiles
 | Variável | Para quê |
 |---|---|
 | `VITE_SUPABASE_URL`, `VITE_SUPABASE_ANON_KEY` | Contas e presets |
-| `VITE_REPO_URL` | Link "Ver o código" da landing (oculto se vazio) |
+| `VITE_REPO_URL` | Link "Ver o código" da seção "O código é aberto" da landing (oculto se vazio) |
 
 Nunca versionar `.env`. Nunca `service_role` no front.
 
