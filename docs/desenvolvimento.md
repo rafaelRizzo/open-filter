@@ -33,7 +33,6 @@ Já cobertos: `params`, `geometry`, `guides`, `curves`, `lut`, `history`, `tiles
 |---|---|
 | `VITE_SUPABASE_URL`, `VITE_SUPABASE_ANON_KEY` | Contas e presets |
 | `VITE_REPO_URL` | Link "Ver o código" da landing (oculto se vazio) |
-| `VITE_DONATE_URL`, `VITE_PIX_KEY` | Botão de apoiar (avisa que as doações ainda não abriram se vazio) |
 
 Nunca versionar `.env`. Nunca `service_role` no front.
 
@@ -44,6 +43,20 @@ Site estático: `bun run build` gera `frontend/dist`, raiz do projeto em `fronte
 - Vercel: `frontend/vercel.json` traz o fallback de SPA.
 - Netlify e Cloudflare Pages: `frontend/public/_redirects`.
 - Defina as variáveis no painel do provedor.
+
+## Releases
+
+`.github/workflows/release.yml` roda a cada push na `main` (commit direto ou PR mergeada) e cria uma tag `vX.Y.Z` e uma release no GitHub, com as notas geradas pelos PRs e commits desde a release anterior. PR aberta, mas ainda não mergeada, não gera release.
+
+A versão sobe pelos commits desde a última tag (Conventional Commits):
+
+| Commit | Sobe |
+|---|---|
+| `tipo!:` ou `BREAKING CHANGE` no corpo | major (`v1.0.0`) |
+| `feat:` | minor (`v0.2.0`) |
+| qualquer outro (`fix`, `docs`, `chore`...) | patch (`v0.1.1`) |
+
+A primeira release é `v0.1.0`. Para um commit não gerar release, escreva `[skip release]` na mensagem. O `version` do `frontend/package.json` não é atualizado: a fonte da versão é a tag.
 
 ## Configuração externa
 

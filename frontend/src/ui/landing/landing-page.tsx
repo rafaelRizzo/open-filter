@@ -4,7 +4,6 @@ import '@fontsource-variable/jetbrains-mono'
 import { Link } from '@tanstack/react-router'
 import { Button } from '@/components/ui/button'
 import { REPO_URL } from '@/lib/links'
-import { DonateButton } from '../donate-button'
 import { Enter } from '../enter'
 import { LogoMark } from '../logo-mark'
 import { LiveDemo } from './live-demo'
@@ -184,11 +183,11 @@ export function LandingPage() {
                 <Enter
                     as="section"
                     inView
-                    aria-labelledby="apoio"
+                    aria-labelledby="codigo-aberto"
                     className="grid gap-8 border-t pt-12 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)]"
                 >
                     <h2
-                        id="apoio"
+                        id="codigo-aberto"
                         className="font-display text-3xl font-semibold tracking-tight text-balance lg:sticky lg:top-6 lg:self-start"
                         style={display}
                     >
@@ -196,11 +195,10 @@ export function LandingPage() {
                     </h2>
                     <div className="flex flex-col items-start gap-5">
                         <p className="text-muted-foreground max-w-xl text-lg text-pretty">
-                            O open-filter não tem anúncios, plano pago nem rastreamento. Se ele te
-                            poupou tempo, uma doação ajuda a manter o projeto.
+                            O open-filter não tem anúncios, plano pago nem rastreamento. O código
+                            está aberto para você ler, adaptar e contribuir.
                         </p>
                         <div className="flex flex-wrap gap-3">
-                            <DonateButton variant="rainbow" size="lg" />
                             {REPO_URL && (
                                 <Button
                                     size="lg"
