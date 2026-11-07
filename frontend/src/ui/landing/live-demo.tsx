@@ -10,7 +10,7 @@ import { decodePhoto } from '@/photos/decode'
 import { SplitDivider } from '../split-divider'
 import { DEMO_PRESETS } from './demo-presets'
 
-const SAMPLE_URL = '/sample.jpg'
+const SAMPLE_URL = '/sample.webp'
 
 const formatValue = (key: (typeof PARAM_KEYS)[number], value: number) => {
     const text = PARAM_DEFS[key].step < 1 ? value.toFixed(2) : String(Math.round(value))
