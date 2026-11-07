@@ -142,7 +142,14 @@ values
     ('Pesadelo de TV', 'Weirdcore', '{"contrast":0.4,"blacks":-0.2,"saturation":-0.4,"temperature":-15,"tint":20,"sharpness":-0.4,"grain":0.7,"grainSize":2.5,"vignette":0.55,"gradeShadowsHue":330,"gradeShadowsSat":0.35,"gradeHighlightsHue":140,"gradeHighlightsSat":0.25}', 1210),
     ('Anomalia', 'Weirdcore', '{"saturation":0.1,"fade":0.2,"grain":0.5,"grainSize":2,"vignette":0.3,"curves":{"r":[[0,0.1],[0.5,0.4],[1,0.9]],"g":[[0,0],[0.5,0.6],[1,1]],"b":[[0,0.2],[0.5,0.55],[1,0.8]]}}', 1220),
     ('Flash amaldiçoado', 'Weirdcore', '{"exposure":0.3,"contrast":0.45,"highlights":0.2,"shadows":-0.35,"blacks":-0.2,"clarity":0.4,"saturation":-0.25,"temperature":-15,"tint":-8,"grain":0.6,"grainSize":2,"vignette":0.6}', 1230),
-    ('Traumacore', 'Weirdcore', '{"contrast":0.25,"saturation":-0.3,"temperature":20,"tint":12,"fade":0.2,"grain":0.5,"vignette":0.5,"hslRedSat":0.3,"gradeShadowsHue":350,"gradeShadowsSat":0.3,"gradeHighlightsHue":20,"gradeHighlightsSat":0.2}', 1240)
+    ('Traumacore', 'Weirdcore', '{"contrast":0.25,"saturation":-0.3,"temperature":20,"tint":12,"fade":0.2,"grain":0.5,"vignette":0.5,"hslRedSat":0.3,"gradeShadowsHue":350,"gradeShadowsSat":0.3,"gradeHighlightsHue":20,"gradeHighlightsSat":0.2}', 1240),
+    -- Glitch
+    ('Glitch digital', 'Glitch', '{"contrast":0.2,"saturation":0.15,"sharpness":0.2,"glitch":0.55,"glitchSize":0.5,"glitchSeed":3}', 1250),
+    ('Falha de sinal', 'Glitch', '{"contrast":0.3,"saturation":-0.2,"tint":-8,"grain":0.4,"grainSize":2,"vignette":0.3,"glitch":0.8,"glitchSize":0.25,"glitchSeed":11}', 1260),
+    ('Fita corrompida', 'Glitch', '{"contrast":0.15,"saturation":0.1,"fade":0.2,"sharpness":-0.4,"grain":0.5,"grainSize":2.5,"glitch":0.4,"glitchSize":0.8,"glitchSeed":27}', 1270),
+    ('RGB quebrado', 'Glitch', '{"contrast":0.25,"saturation":0.3,"glitch":0.3,"glitchSize":0.1,"glitchSeed":5}', 1280),
+    ('Neon vazado', 'Glitch', '{"exposure":-0.1,"contrast":0.35,"saturation":0.35,"blacks":-0.15,"glitch":0.2,"glitchSize":0.6,"glitchSeed":42,"gradeShadowsHue":270,"gradeShadowsSat":0.3,"gradeHighlightsHue":180,"gradeHighlightsSat":0.2}', 1310),
+    ('Monitor com defeito', 'Glitch', '{"contrast":0.3,"saturation":-0.15,"temperature":-6,"grain":0.5,"grainSize":2,"vignette":0.5,"vignetteMidpoint":0.2,"vignetteFeather":0.5,"glitch":0.65,"glitchSize":0.35,"glitchSeed":8}', 1320)
 ),
 upd as (
     update public.public_presets p

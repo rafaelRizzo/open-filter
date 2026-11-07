@@ -31,7 +31,7 @@ Só Auth (Google OAuth) e Postgres. Sem servidor próprio. Aplicar na ordem: `mi
 
 Limites no banco: `name` até 50 caracteres e CHECK de tamanho em `params` (< 2048 bytes). O cliente valida com o zod do front, o banco é a segunda barreira. RLS ligado em toda tabela, `updated_at` por trigger, `user_id` com default `auth.uid()`.
 
-`public_presets` tem `category` (migration `20261107150000`), usada pela UI para filtrar. Categorias atuais: Geral, Filme, Preto e branco, Anime, Cores e contraste, Dramático, Luz e clima, Cinema, Vintage, Lifestyle, Paisagem, Retrato, Urbano, Duotone, Baixa qualidade, Retro digital, Liminal, Dreamcore, Weirdcore. Presets do usuário não têm categoria.
+`public_presets` tem `category` (migration `20261107150000`), usada pela UI para filtrar. Categorias atuais: Geral, Filme, Preto e branco, Anime, Cores e contraste, Dramático, Luz e clima, Cinema, Vintage, Lifestyle, Paisagem, Retrato, Urbano, Duotone, Baixa qualidade, Retro digital, Liminal, Dreamcore, Weirdcore, Glitch. Presets do usuário não têm categoria.
 
 O seed é idempotente por nome: insere os que faltam e só atualiza categoria e ordem dos existentes (nunca sobrescreve `params`). Chaves e faixas dos params seguem `frontend/src/editor/params.ts`: se mudar o schema, revisar o seed.
 

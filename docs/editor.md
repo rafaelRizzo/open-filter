@@ -14,6 +14,7 @@ Schema zod único. Cada parâmetro tem `min`, `max`, `step` e `default`. Todos o
 | Grading | sombras, meios-tons, realces x matiz, saturação, luminância + `gradeBalance` |
 | Curvas | `curves`: canais `rgb`, `r`, `g`, `b`, até 12 pontos, spline cúbica monótona |
 | Efeitos | `grain`, `grainSize`, `vignette`, `vignetteMidpoint`, `vignetteFeather`, `fade` |
+| Glitch (na aba Efeitos) | `glitch`, `glitchSize`, `glitchSeed` (bandas deslocadas + separação RGB) |
 | Detalhe | `sharpness`, `sharpnessRadius`, `clarity`, `dehaze` |
 | LUT | `lutStrength` (o LUT em si não é param: não vai para preset nem banco) |
 | Geometria | `geometry`: corte, giro 90°, espelho, endireitar (±30°), `exportWidth` |
@@ -24,7 +25,7 @@ Abas da UI (`groups.ts`): Luz, Cor, HSL, Grading, Curvas, Efeitos, Detalhe, Cort
 
 ## Shader (`shader.ts`, `uniforms.ts`)
 
-Um fragment shader só, em estágios: claridade/névoa (a partir da original), tom, cor, HSL por faixa, color grading, curvas, LUT, nitidez e efeitos. `uniforms.ts` converte `EditParams` em uniforms (`exposure` vira `uExposure`, `hslRedHue` vira `uHslRedHue`).
+Um fragment shader só, em estágios: claridade/névoa (a partir da original), glitch (na amostragem da foto), tom, cor, HSL por faixa, color grading, curvas, LUT, nitidez e efeitos. `uniforms.ts` converte `EditParams` em uniforms (`exposure` vira `uExposure`, `hslRedHue` vira `uHslRedHue`).
 
 ## Canvas (`photo-canvas.tsx`)
 

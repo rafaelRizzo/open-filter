@@ -50,6 +50,9 @@ const base: Record<string, string> = {
     vignetteMidpoint: 'Ponto médio da vinheta',
     vignetteFeather: 'Suavidade da vinheta',
     fade: 'Desbotado',
+    glitch: 'Glitch',
+    glitchSize: 'Altura das bandas',
+    glitchSeed: 'Semente do glitch',
     hslAllHue: 'Todas as cores: matiz',
     hslAllSat: 'Todas as cores: saturação',
     hslAllLum: 'Todas as cores: luminância',
@@ -87,6 +90,11 @@ export const PARAM_GROUPS: readonly ParamGroup[] = [
         label: 'Efeitos',
         keys: ['grain', 'grainSize', 'vignette', 'vignetteMidpoint', 'vignetteFeather', 'fade'],
     },
+    {
+        id: 'glitch',
+        label: 'Glitch',
+        keys: ['glitch', 'glitchSize', 'glitchSeed'],
+    },
     { id: 'detail', label: 'Detalhe', keys: ['sharpness', 'sharpnessRadius', 'clarity', 'dehaze'] },
 ]
 
@@ -117,12 +125,11 @@ export const tabParamKeys = (id: TabId): readonly ParamKey[] => {
         return ['gradeBalance', ...GRADE_ZONES.flatMap((z) => HSL_PROPS.map((p) => gradeKey(z, p)))]
     // Curvas e corte não são parâmetros numéricos: têm reset próprio.
     if (id === 'curves' || id === 'crop') return []
-    // O LUT carregado não é parâmetro: a aba Efeitos só volta a intensidade dele ao padrão.
-    return (
-        PARAM_GROUPS.find((g) => g.id === id)?.keys.concat(
-            id === 'effects' ? ['lutStrength'] : [],
-        ) ?? []
-    )
+    // Glitch fica na aba Efeitos. O LUT carregado não é parâmetro: a aba Efeitos só volta a intensidade dele ao padrão.
+    const keys = PARAM_GROUPS.find((g) => g.id === id)?.keys ?? []
+    if (id !== 'effects') return keys
+    const glitch = PARAM_GROUPS.find((g) => g.id === 'glitch')?.keys ?? []
+    return [...keys, ...glitch, 'lutStrength']
 }
 
 export const tabHasCurves = (id: TabId) => id === 'curves'

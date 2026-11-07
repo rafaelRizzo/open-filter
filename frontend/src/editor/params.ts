@@ -34,6 +34,10 @@ const BASE_DEFS = {
     vignetteMidpoint: { min: 0, max: 1, step: 0.01, default: 0.3 },
     vignetteFeather: { min: 0.05, max: 1, step: 0.01, default: 0.6 },
     fade: { min: 0, max: 1, step: 0.01, default: 0 },
+    // Glitch: bandas deslocadas + separação RGB. Tamanho = altura das bandas; semente sorteia outro padrão.
+    glitch: { min: 0, max: 1, step: 0.01, default: 0 },
+    glitchSize: { min: 0, max: 1, step: 0.01, default: 0.5 },
+    glitchSeed: { min: 0, max: 99, step: 1, default: 0 },
     // HSL global: vale para todas as cores ao mesmo tempo; as 8 faixas ajustam cada cor por cima disso.
     hslAllHue: { min: -1, max: 1, step: 0.01, default: 0 },
     hslAllSat: { min: -1, max: 1, step: 0.01, default: 0 },

@@ -143,6 +143,10 @@ export function AdjustPanel(props: Props) {
                         ))}
                         <TabsContent value="effects" className="flex flex-col gap-5">
                             {sliders('effects')}
+                            <div className="flex flex-col gap-5 border-t pt-4">
+                                <span className="font-heading text-sm font-semibold">Glitch</span>
+                                {sliders('glitch')}
+                            </div>
                             <LutControl
                                 key={`lut-${resetKey}`}
                                 lut={lut}

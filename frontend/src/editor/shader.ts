@@ -243,6 +243,36 @@ vec3 applyDehaze(vec3 base) {
     return mix(base, vec3(0.9), -uDehaze * 0.4 * (1.0 - dc * 0.5));
 }
 
+// Glitch: deslocamento horizontal por faixa (em coordenadas de textura) para cada canal. A faixa
+// depende só da posição do fragmento na imagem, então preview, zoom e exportação em tiles coincidem.
+vec3 gGlitchX = vec3(0.0);
+
+void setupGlitch() {
+    vec2 iuv = imageUv();
+    float seed = floor(uGlitchSeed + 0.5);
+    float rows = mix(60.0, 6.0, uGlitchSize);
+    float row = floor(iuv.y * rows);
+    float on = step(rand(vec2(row, seed * 1.37 + 3.1)), uGlitch * 0.45);
+    float shift = (rand(vec2(row + 17.0, seed)) - 0.5) * 2.0 * uGlitch * 0.2 * on;
+    // Segunda camada: faixas finas, mais raras.
+    float row2 = floor(iuv.y * rows * 5.0);
+    float on2 = step(rand(vec2(row2, seed + 91.0)), uGlitch * 0.12);
+    shift += (rand(vec2(row2 + 5.0, seed + 7.0)) - 0.5) * uGlitch * 0.1 * on2;
+    // Separação RGB: sempre um pouco, bem maior dentro das faixas afetadas.
+    float split = uGlitch * 0.012 * (0.35 + 2.0 * max(on, on2));
+    float unit = uImageRect.z * uInputSize.z;
+    gGlitchX = vec3(shift + split, shift, shift - split) * unit;
+}
+
+// Amostra com o glitch aplicado: cada canal lê com o seu deslocamento.
+vec3 fetchAt(vec2 uv) {
+    return vec3(
+        texture(uTexture, clampToImage(uv + vec2(gGlitchX.r, 0.0))).r,
+        texture(uTexture, clampToImage(uv + vec2(gGlitchX.g, 0.0))).g,
+        texture(uTexture, clampToImage(uv + vec2(gGlitchX.b, 0.0))).b
+    );
+}
+
 void main() {
     vec2 screenPx = uOutputFrame.xy + vTextureCoord * uInputSize.xy;
     if (screenPx.x < uClip.x || screenPx.y < uClip.y || screenPx.x > uClip.z || screenPx.y > uClip.w) {
@@ -257,6 +287,12 @@ void main() {
     }
     float a = src.a;
     vec3 base = a > 0.0 ? src.rgb / a : vec3(0.0);
+    if (a > 0.0) {
+        if (uGlitch > 0.001) {
+            setupGlitch();
+            base = fetchAt(vTextureCoord) / a;
+        }
+    }
     if (abs(uClarity) > 0.001) base = applyClarity(base);
     if (abs(uDehaze) > 0.001) base = applyDehaze(base);
     vec3 rgb = grade(base);
